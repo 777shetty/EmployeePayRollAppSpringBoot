@@ -3,6 +3,8 @@ package com.bridgelabz.EmployeePayRollApp.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,13 +44,13 @@ public class EmployeePayrollController {
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	}
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> addEmployeePayrollData(@RequestBody EmployeePayrollDTO empPayrollDTO){
+	public ResponseEntity<ResponseDTO> addEmployeePayrollData(@Valid @RequestBody EmployeePayrollDTO empPayrollDTO){
 		EmployeePayrollData employeePayrollData=employeePayrollService.createEmployeePayrollData(empPayrollDTO);
 			ResponseDTO respDTO= new ResponseDTO("Crated Employee PayrollData is successful", employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	}
 	@PutMapping("/update/{empid}")
-	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empid")int empid, @RequestBody EmployeePayrollDTO empPayrollDTO){
+	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empid")int empid,@Valid @RequestBody EmployeePayrollDTO empPayrollDTO){
 		EmployeePayrollData employeePayrollData=employeePayrollService.updateEmployeePayrollData(empid, empPayrollDTO);
 		ResponseDTO respDTO= new ResponseDTO("Updated Employee PayrollData is successful", employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
