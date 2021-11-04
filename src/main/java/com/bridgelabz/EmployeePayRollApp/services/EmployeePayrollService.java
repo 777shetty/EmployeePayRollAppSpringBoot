@@ -10,7 +10,7 @@ import com.bridgelabz.EmployeePayRollApp.model.EmployeePayrollData;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollServices {
-	private List<EmployeePayrollData> employeePayrollList= new ArrayList<>(); 
+	private List<EmployeePayrollData> employeePayrollList= new ArrayList<EmployeePayrollData>(); 
 
 	@Override
 	public List<EmployeePayrollData> getEmployeePayrollData() {
