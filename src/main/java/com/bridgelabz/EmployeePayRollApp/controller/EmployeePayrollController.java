@@ -29,9 +29,10 @@ public class EmployeePayrollController {
 	
 	@RequestMapping(value= {"","/","/get"})
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(){
-		List<EmployeePayrollData> employeePayrollList=new ArrayList<>();
-		employeePayrollList.add(new EmployeePayrollData(1, new EmployeePayrollDTO("Chethan", 30000)));
+		List<EmployeePayrollData> employeePayrollList=null;
+		employeePayrollList = employeePayrollService.getEmployeePayrollData();
 		ResponseDTO respDTO= new ResponseDTO("Get call success", employeePayrollList);
+		respDTO.getData();
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	}
 	@GetMapping("/get/{empid}")
